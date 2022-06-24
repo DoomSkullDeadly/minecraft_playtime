@@ -67,7 +67,10 @@ if __name__ == '__main__':  # TODO: Support for multiple mc directories
 
     playtimes = []
     for log in logs:  # iter through logs
-        playtimes.append(get_playtime(log))
+        try:
+            playtimes.append(get_playtime(log))
+        except:
+            print(f"Something went wrong with {log}")
 
     total = 0
     for time in playtimes:
@@ -79,3 +82,4 @@ if __name__ == '__main__':  # TODO: Support for multiple mc directories
     minutes = total // 60
     seconds = total - (minutes * 60)
     print('{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds)))
+    input(print("[Enter] to confirm"))
